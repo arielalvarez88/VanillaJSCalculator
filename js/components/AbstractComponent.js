@@ -1,3 +1,4 @@
+
 var AbstractComponent = function (config) {
     var me = this;
     /**
@@ -66,6 +67,7 @@ AbstractComponent.prototype.render = function () {
     html = html.format(this.getState());
     parent.innerHTML = html;
     this.el = parent.firstChild
+    this.createChildren();
     this.attachListenersToEvents(this.el);
 }
 
@@ -87,4 +89,14 @@ AbstractComponent.prototype.getParent = function () {
         this.parent = document.getElementById(this.parentId);
     }
     return this.parent;
+}
+
+/**
+ * 
+ * Create children components in this method.
+ * @template
+ * 
+ */
+AbstractComponent.prototype.createChildren = function () {
+    
 }

@@ -11,13 +11,13 @@ var Slider = function (config) {
     /**
      * @property 
      */
-    this.state = Object.assign({
-        minVal : 0, 
-        maxVal : 100,        
-        value: 50
+    this.state = ObjectUtils.assign({
+        minVal: 0,
+        maxVal: 40,
+        value: Store.getState()[this.keyInStore]
     }, config);
 
-    this.value = Store.getState()[this.keyInStore];
+
 
 
 }
@@ -37,7 +37,7 @@ Slider.prototype.updateBasedOnState = function () {
 
 }
 
-Slider.prototype.getTemplateUrl = function(){
+Slider.prototype.getTemplateUrl = function () {
     return "/js/components/slider/slider.html";
 }
 
@@ -47,5 +47,11 @@ Slider.prototype.onInput = function (ev) {
 }
 Slider.prototype.attachListenersToEvents = function (nodes) {
     var input = nodes.getElementsByClassName('range-input');
-    input[0].oninput = this.onInput.bind(this);
+    if (BrowserUtils.isIE()) {
+        input[0].onchange = this.onInput.bind(this);
+    } else {
+        input[0].oninput = this.onInput.bind(this);
+    }
+
+
 }

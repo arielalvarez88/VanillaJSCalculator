@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Zepplin</title>        
-    </head>
-    <script src="./index.js"></script>
-    <body>
-        
-    </body>
+
+<head>
+    <title>Zepplin</title>
+    <meta name="viewport" content="width=device-width">
+    <link href="css/common.css" rel="stylesheet" type="text/css" />
+    <link href="css/grid.css" rel="stylesheet" type="text/css" />
+    <link href="js/components/slider/slider.css" rel="stylesheet" type="text/css" />
+    <link href="js/components/dollarInput/dollarInput.css" rel="stylesheet" type="text/css" />
+    <link href="js/components/calculator/calculator.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <div class="gutter">
+        <div class="header-container">
+            <h1 class="mortgage-calculator">Mortgage Calculator</h1>
+            <hr />
+        </div>
+
+        <div id="content">
+            <div id="calculator">
+            </div>
+        </div>
+
+    </div>
+
+    <script async="false" src="js/enums/Actions.js"></script>
+    <script async="false" src="js/extend/String.js"></script>
+    <script async="false" src="js/utils/Http.js"></script>
+    <script async="false" src="js/utils/ObjectUtils.js"></script>
+    <script async="false" src="js/utils/BrowserUtils.js"></script>
+    <script async="false" src="js/redux.js"></script>
+    <script async="false" src="js/calculatorReducer.js"></script>
+    <script async="false" src="js/components/AbstractComponent.js"></script>
+    <script async="false" src="js/components/slider/Slider.js"></script>
+    <script async="false" src="js/components/dollarInput/DollarInput.js"></script>
+    <script async="false" src="js/components/calculator/Calculator.js"></script>
+    <script async="false" src="./index.js"></script>
+</body>
+
 </html>

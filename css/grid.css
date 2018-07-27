@@ -1,0 +1,14 @@
+.row > *{
+    display: table-cell;
+    /* padding: 10px; */
+}
+.row{
+    display: table;
+    overflow: hidden;
+    clear: both;
+    width: 100%;
+}
+
+.col-6{
+    /* width: 50%; */
+}

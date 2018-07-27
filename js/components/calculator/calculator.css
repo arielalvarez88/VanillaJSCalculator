@@ -1,0 +1,13 @@
+.calculator{
+    padding: 15px 20px;
+}
+.anual-tax-container{
+    padding-right: 10px;
+}
+.anual-insurance-container{
+    padding-left: 10px;
+}
+label{
+    margin: 5px 0;
+    display: block;
+}

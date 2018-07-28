@@ -1,3 +1,40 @@
+/*======Animations======*/
+
+/*
+*   Animation to increase width
+*/
+
+@keyframes animate-down {
+    from {margin-top: -220px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0px;
+        opacity: 1;
+    }
+}
+
+/*
+*   Animation to increase height
+*/
+
+/*
+*   Animation to increase height
+*/
+
+/*======End of Animations======*/
+
+
+
+.calculator .calculator-section{
+    z-index: 100000;
+    position: relative;
+    background-color: white;
+}
+.calculator .results-section{
+    z-index: -1000;
+    position: relative;
+}
 .calculator .anual-tax-container {
     padding-right: 10px;
 }
@@ -48,6 +85,8 @@
     height: 289px;
 }
 
+
+
 /* xs devices*/
 
 @media only screen and (max-width: 768px) {
@@ -56,6 +95,12 @@
     }
     .calculator .calculator-section {
         padding: 20px;
+    }
+
+    .calculator .results-section.expanded{
+        display: block;
+        animation-name: animate-down;
+        animation-duration: 1s;
     }
 }
 

@@ -10,7 +10,7 @@ var Calculator = function (config) {
      * @property 
      */
     this.state = {
-
+        resultsCls : Store.getState().showingResults ? "expanded" : "collapsed"
     };
 
 
@@ -26,17 +26,17 @@ Calculator.prototype.updateBasedOnState = function () {
     if (!this.el) {
         return;
     }
-    var resultsContainer = this.el.getElementsByClassName("results-container")[0];
+    var resultsContainer = this.el.getElementsByClassName("results-section")[0];
     var state = Store.getState();
 
     if (state.showingResults) {
 
-        resultsContainer.className = this.el.className.replace("collapsed", "");
-        resultsContainer.className = this.el.className + " expanded";
+        resultsContainer.className = resultsContainer.className.replace("collapsed", "");
+        resultsContainer.className = resultsContainer.className + " expanded";
     } else {
 
-        resultsContainer.className = this.el.className.replace("expanded", "");
-        resultsContainer.className = this.el.className + " collapsed";
+        resultsContainer.className = resultsContainer.className.replace("expanded", "");
+        resultsContainer.className = resultsContainer.className + " collapsed";
 
     }
 

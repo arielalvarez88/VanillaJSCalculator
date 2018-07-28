@@ -1,7 +1,7 @@
 /*======Animations======*/
 
 /*
-*   Animation to increase width
+*   Animation from top down.
 */
 
 @keyframes animate-down {
@@ -15,9 +15,20 @@
 }
 
 /*
-*   Animation to increase height
+*   Animation from left to right.
 */
 
+@keyframes animate-right{
+    from{
+        margin-left: -149px;
+        opacity: 0;
+    }
+    to{
+        margin-left: 0;
+        opacity: 1;
+    }
+    
+}
 /*
 *   Animation to increase height
 */
@@ -104,7 +115,7 @@
     }
 }
 
-/* s devices*/
+/* small devices and bigger */
 
 @media only screen and (min-width: 768px) {
     .calculator .results-section {
@@ -118,6 +129,15 @@
         width: 52%;
         height: 522px;
         padding: 40px;
+    }
+
+    .calculator .calculator-section{
+        width: 298px;
+    }
+    .calculator .results-section.expanded{
+        display: block;
+        animation-name: animate-right;
+        animation-duration: 1s;
     }
 }
 

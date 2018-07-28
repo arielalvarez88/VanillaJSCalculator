@@ -21,6 +21,14 @@ var calcReducer = function (state, action) {
             ObjectUtils.assign(newState, valsToChange);
             return newState;
             break;
+        case Actions.CALCULATE:
+            var valsToChange = {
+                showingResults: true
+            };            
+            var newState = ObjectUtils.assign({}, state);
+            ObjectUtils.assign(newState, valsToChange);
+            return newState;
+            break;
         default:
             return state;
     }

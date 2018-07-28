@@ -1,6 +1,6 @@
 "use strict";
 /**
- * The calculator widget. It contains everything related to the calculator.
+ * The results widget.
  * @param {Object} config 
  */
 var Results = function (config) {
@@ -10,8 +10,9 @@ var Results = function (config) {
      * @property 
      */
     this.state = {
-
+        
     };
+
 
 
 }
@@ -27,6 +28,7 @@ Results.prototype.updateBasedOnState = function () {
         return;
     }
 
+   
 
 }
 
@@ -50,6 +52,6 @@ Results.prototype.attachListenersToEvents = function (nodes) {
  */
 Results.prototype.createChildren = function (nodes) {
 
-    
+
 }
 

@@ -1,7 +1,3 @@
-.calculator {
-    padding: 15px 20px;
-}
-
 .calculator .anual-tax-container {
     padding-right: 10px;
 }
@@ -22,22 +18,64 @@
     margin-bottom: 5px;
 }
 
-.calculator form{
+.calculator form {
     margin-top: 15px;
 }
-.calculator .sliders-container {    
+
+.calculator .sliders-container {
     margin-bottom: 22px;
 }
 
-.calculator .big-inputs{
+.calculator .big-inputs {
     margin-bottom: 20px;
 }
 
 .calculator label {
     font-weight: bold;
-
 }
 
-.calculator .slider-item{
+.calculator .slider-item {
     margin-bottom: 13px;
 }
+
+.calculator .calculator-section {
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1);
+    /* width: 100%; */
+}
+
+.calculator .results-section {
+    width: 100%;
+    height: 289px;
+}
+
+/* xs devices*/
+
+@media only screen and (max-width: 768px) {
+    .calculator .results-section {
+        height: 289px;
+    }
+    .calculator .calculator-section {
+        padding: 20px;
+    }
+}
+
+/* s devices*/
+
+@media only screen and (min-width: 768px) {
+    .calculator .results-section {
+        float: left;
+        width: 33%;
+        height: 440px;
+        margin-top: 41px;
+    }
+    .calculator .calculator-section {
+        float: left;
+        width: 52%;
+        height: 522px;
+        padding: 40px;
+    }
+}
+
+/* medium devices and large devices*/
+
+@media only screen and (min-width: 992px) {}

@@ -26,7 +26,19 @@ Calculator.prototype.updateBasedOnState = function () {
     if (!this.el) {
         return;
     }
+    var resultsContainer = this.el.getElementsByClassName("results-container")[0];
+    var state = Store.getState();
 
+    if (state.showingResults) {
+
+        resultsContainer.className = this.el.className.replace("collapsed", "");
+        resultsContainer.className = this.el.className + " expanded";
+    } else {
+
+        resultsContainer.className = this.el.className.replace("expanded", "");
+        resultsContainer.className = this.el.className + " collapsed";
+
+    }
 
 }
 
@@ -41,7 +53,15 @@ Calculator.prototype.getTemplateUrl = function () {
  * @override
  */
 Calculator.prototype.attachListenersToEvents = function (nodes) {
+    if (!this.el) {
+        throw new Error("To attach listeners, the component must be rendered");
+    }
 
+    var form = this.el.getElementsByTagName("form")[0];
+    form.onsubmit = function (ev) {
+        ev.preventDefault();
+        Store.dispatch({ type: Actions.CALCULATE });
+    };
 }
 
 
@@ -82,7 +102,10 @@ Calculator.prototype.createChildren = function (nodes) {
     })
 
 
-
+    var resultsContainer = this.el.getElementsByClassName('results-section')[0];
+    new Results({
+        parent: resultsContainer
+    })
 
 }
 

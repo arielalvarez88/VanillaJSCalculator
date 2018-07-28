@@ -13,9 +13,7 @@ var onload = function(){
     new Calculator({
         parentId: 'calculator-container'
     })
-    new Results({
-        parentId: 'results-container'
-    })
+  
 }
 
 

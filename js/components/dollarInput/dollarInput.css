@@ -1,3 +1,6 @@
-.dollar-input {
-    
+.dollar-input .dollar-sign{
+    /* display: inline-block; */
+    /* vertical-align: middle; */
+    /* align-self: flex-start; */
 }
+

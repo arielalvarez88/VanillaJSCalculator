@@ -1,5 +1,13 @@
 "use strict";
 
+/**
+ * 
+ * @param {Object} config
+ * @param {Number} config.minVal 
+ * @param {Number} config.maxVal
+ * @param {Number} config.step 
+ * 
+ */
 var Slider = function (config) {
     var me = this,
         validConfig = "minVal" in config && "maxVal" in config && "parentId" in config;
@@ -14,6 +22,7 @@ var Slider = function (config) {
     this.state = ObjectUtils.assign({
         minVal: 0,
         maxVal: 40,
+        step: 1,
         value: Store.getState()[this.keyInStore]
     }, config);
 
@@ -33,7 +42,7 @@ Slider.prototype.updateBasedOnState = function () {
         digitalValue = this.el.getElementsByClassName("digital-value")[0];
 
     this.value = state[this.keyInStore]
-    digitalValue.value = this.value;
+    digitalValue.getElementsByTagName("input")[0].value = this.value;
 
 }
 
@@ -46,12 +55,29 @@ Slider.prototype.onInput = function (ev) {
     Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: Number(ev.target.value) })
 }
 Slider.prototype.attachListenersToEvents = function (nodes) {
-    var input = nodes.getElementsByClassName('range-input');
+    var input = nodes.getElementsByClassName("range-input");
     if (BrowserUtils.isIE()) {
         input[0].onchange = this.onInput.bind(this);
     } else {
         input[0].oninput = this.onInput.bind(this);
     }
 
+
+}
+/**
+ * 
+ * Create children components in this method.
+ * @template
+ * 
+ */
+Slider.prototype.createChildren = function () {
+    var inputContainers = this.el.getElementsByClassName("input-container");
+
+    for (var i = 0; i < inputContainers.length; i++) {
+        new Input({
+            keyInStore: this.keyInStore,            
+            parent: inputContainers[i]
+        })
+    }
 
 }

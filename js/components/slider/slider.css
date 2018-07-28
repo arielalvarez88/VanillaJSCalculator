@@ -3,6 +3,11 @@
 **/
 
 
+.slider .digital-value{
+    padding-left: 10px;
+}
+
+
 @media only screen and (max-width: 600px) {
     .slider input[type=range] {
         width: 263px;
@@ -20,9 +25,7 @@
 }
 @media only screen and (min-width: 601px) {
   .slider input[type=range] {
-      width: 263px;      
       border-radius: 100px;
-      
   }
   .slider .range-number {
       width: 18px;
@@ -37,8 +40,6 @@
 input[type=range] {
     -webkit-appearance: none;
     margin: 18px 0;
-    margin: 4px;
-    /* width: 100%; */
 }
 
 input[type=range]:focus {
@@ -119,11 +120,16 @@ input[type=range]::-ms-thumb {
     cursor: pointer;
 }
 
+
+
 /* Chrome */
 
-input[type='range'] {
+input[type=range] {
     overflow: hidden;
     -webkit-appearance: none;
 }
-
+.slider .range-input{
+    /* width: -webkit-fill-available; */
+    width: calc(100% - 8px);
+}
 /* Chrome */

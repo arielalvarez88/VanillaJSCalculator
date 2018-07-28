@@ -1,11 +1,11 @@
 "use-strict";
 var calcReducer = function (state, action) {
     var defaultState = {
-        rateOfIntrest: 0,
+        rateOfIntrest: 0.1,
         yearsOfMortgage: 10,
         loanAmount: null,
-        annualTax: null,
-        annualInssurance: null,
+        anualTax: null,
+        anualInsurance: null,
         principleAndInterest: null,
         tax: null,
         insurance: null,

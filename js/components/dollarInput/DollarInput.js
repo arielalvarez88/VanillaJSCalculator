@@ -13,38 +13,16 @@ var DollarInput = function (config) {
 
 }
 
-DollarInput.prototype = Object.create(AbstractComponent.prototype);
+DollarInput.prototype = Object.create(NumberInput.prototype);
 
-DollarInput.prototype.updateBasedOnState = function () {
 
-    if (!this.el) {
-        return;
-    }
-    var state = Store.getState(),
-        input = this.el.getElementsByTagName("input")[0];
-
-    this.value = state[this.keyInStore]
-    input.value = this.value;
-
-}
 
 DollarInput.prototype.getTemplateUrl = function () {
     return "/js/components/dollarInput/dollarInput.html";
 }
 
-DollarInput.prototype.onChange = function (ev) {    
-
-    Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: Number(ev.target.value) })
-}
-DollarInput.prototype.onKeyUp = function (ev) {    
-
-    ev.target.value = "$ " + ev.target.value;
-    
-}
-
 
 DollarInput.prototype.attachListenersToEvents = function (nodes) {
+    NumberInput.prototype.attachListenersToEvents.call(this,nodes);
     var input = nodes.getElementsByTagName("input")[0];
-    input.onchange = this.onChange.bind(this);
-    input.onkeyup = this.onKeyUp.bind(this);
 }

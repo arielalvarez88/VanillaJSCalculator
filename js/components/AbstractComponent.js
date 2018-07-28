@@ -12,17 +12,12 @@ var AbstractComponent = function (config) {
      * @property {String}
      */
     this.template = null;
-    /**
-    * Html template used for initial render.
-    * @property {String}
-    */
-    this.parent = null;
 
     /**
-    * State of the component.
-    * @property {String}
+    * Parent element of this component.
+    * @property {HtmlElement}
     */
-    this.parent = null;
+    this.parent = config.parent || null;
 
     this.parentId = config.parentId;
 
@@ -67,9 +62,12 @@ AbstractComponent.prototype.render = function () {
     html = html.format(this.getState());
     parent.innerHTML = html;
     this.el = parent.firstChild
-    this.createChildren();
+    this.createChildren();    
     this.attachListenersToEvents(this.el);
+    
+    
 }
+
 
 /**
  * This method is meant to be overwritten in child classes.
@@ -98,5 +96,5 @@ AbstractComponent.prototype.getParent = function () {
  * 
  */
 AbstractComponent.prototype.createChildren = function () {
-    
+
 }

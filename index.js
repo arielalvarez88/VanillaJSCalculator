@@ -11,7 +11,10 @@ var Store;
 var onload = function(){
     Store = Redux.createStore(calcReducer)
     new Calculator({
-        parentId: 'calculator'
+        parentId: 'calculator-container'
+    })
+    new Results({
+        parentId: 'results-container'
     })
 }
 

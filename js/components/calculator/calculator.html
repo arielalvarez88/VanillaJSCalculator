@@ -1,36 +1,48 @@
 <div class="calculator container">
 
-    <h4>Change values to calculate results</h4>
+    <h4 class="instructions">Change values to calculate results</h4>
     <hr/>
 
     <form>
-        <h2>Years of Mortagage</h2>
-        <div id="years-of-mortgage">
+
+        <div class="sliders-container">
+
+            <div class="slider-item"> 
+                <label>Years of Mortagage</label>
+                <div id="years-of-mortgage">
+                </div>
+            </div>
+
+            <div class="slider-item">
+                <label> Rate Interest(%)</label>
+                <div id="rate-of-interest">
+                </div>
+            </div>
+
+
         </div>
 
-        <h2>Rate Interest(%)</h2>
-        <div id="rate-of-interest">
+        <div class="big-inputs">
+            <label class="number-input-label">Loan amount</label>
+            <div id="loan-amount">
+            </div>
         </div>
 
-
-        <label>Loan amount</label>
-        <div id="loan-amount">
-        </div>
 
         <div class="row">
 
-            <div class="col-6 anual-tax-container">                
-                    <label for="anual-insurance-input">Anual Tax</label>
-                    <div id="anual-tax">
-                    </div>                
+            <div class="col-6 anual-tax-container">
+                <label for="anual-insurance-input" class="number-input-label">Anual Tax</label>
+                <div id="anual-tax">
+                </div>
             </div>
 
 
 
-            <div class="col-6 anual-insurance-container">               
-                    <label for="anual-insurance-input">Anual Insurance</label>
-                    <div id="anual-insurance">
-                    </div>
+            <div class="col-6 anual-insurance-container">
+                <label for="anual-insurance-input" class="number-input-label">Anual Insurance</label>
+                <div id="anual-insurance">
+                </div>
             </div>
 
 

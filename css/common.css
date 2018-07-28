@@ -2,6 +2,11 @@
     padding: 0;
     margin: 0;
 }
+html{
+    font-family: HelveticaNeue, Helvetica, Arial
+}
+textarea, select, input, button { outline: none; }
+
 
 .field {
     display: table;
@@ -28,43 +33,63 @@
     margin: 20px 0;
 }
 
+#calculator-container {
+    width: 100%;
+    height: 289px;
+}
+
+#results-container {
+    width: 100%;
+    height: 289px;
+}
+
 /* xs devices*/
+
 @media only screen and (max-width: 768px) {
-    html{
+    html {
         font-size: 12px;
     }
     .header-container {
         padding-left: 20px;
     }
-    
-  
     #content {
         padding: 0 10px;
     }
 }
 
 /* s devices*/
+
 @media only screen and (min-width: 768px) {
-  
     #content {
         padding: 0 40px;
+    }
+    #results-container {
+        height: 289px;
     }
 }
 
 /* medium devices*/
+
 @media only screen and (min-width: 992px) {
-  
     #content {
         padding: 0 40px;
     }
-
-    html{
+    html {
         font-size: 14px;
+        
     }
-    
+    #calculator-container {
+        float: left;
+        width: 52%;
+        height: 522px;
+    }
+    #results-container {
+        float: left;
+        width: 33%;
+        height: 440px;
+        margin-top: 41px;
+    }
 }
-
- 
 
 .gutter {
     max-width: 850px;
@@ -72,7 +97,7 @@
     margin-right: auto;
 }
 
-#calculator {
+#calculator-container {
     box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -81,19 +106,13 @@ input {
     width: 100%;
     height: 100%;
     padding: 0;
+    font-size: 14px;
     border-width: 0;
 }
 
-.input {
-    border: 1px inset #ccc;
-    /* padding-left: 25px; */
-    height: 45px;
-    overflow: hidden;
-    padding-left: 10px;
-}
 
 .mortgage-calculator {
-    font-family: HelveticaNeue;
+    font-family: HelveticaNeue-Light;
     font-size: 1.5rem;
     color: #006ea0;
     font-weight: normal;

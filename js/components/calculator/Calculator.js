@@ -57,6 +57,14 @@ Calculator.prototype.createChildren = function (nodes) {
         parentId: "years-of-mortgage"
     })
 
+    new Slider({
+        minVal: 0.1,
+        maxVal: 10,
+        step: 0.1,
+        keyInStore: "rateOfIntrest",
+        parentId: "rate-of-interest"
+    })
+
     new DollarInput({
         keyInStore: 'loanAmount',
         parentId: "loan-amount"
@@ -72,6 +80,7 @@ Calculator.prototype.createChildren = function (nodes) {
         keyInStore: 'anualInsurance',
         parentId: 'anual-insurance'
     })
+
 
 
 

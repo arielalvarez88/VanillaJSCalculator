@@ -1,13 +1,43 @@
-.calculator{
+.calculator {
     padding: 15px 20px;
 }
-.anual-tax-container{
+
+.calculator .anual-tax-container {
     padding-right: 10px;
 }
-.anual-insurance-container{
+
+.calculator .anual-insurance-container {
     padding-left: 10px;
 }
-label{
+
+.calculator .number-input-label {
     margin: 5px 0;
     display: block;
+}
+
+.calculator .instructions {
+    font-weight: normal;
+    font-size: 1rem;
+    color: #3e3d3f;
+    margin-bottom: 5px;
+}
+
+.calculator form{
+    margin-top: 15px;
+}
+.calculator .sliders-container {    
+    margin-bottom: 22px;
+}
+
+.calculator .big-inputs{
+    margin-bottom: 20px;
+}
+
+.calculator label {
+    font-weight: bold;
+
+}
+
+.calculator .slider-item{
+    margin-bottom: 13px;
 }

@@ -9,7 +9,7 @@ function dynamicallyLoadScript(url, async) {
 var Store;
 
 var onload = function(){
-    Store = Redux.createStore(calcReducer)
+    Store = Redux.createStore(calcReducer);
     new Calculator({
         parentId: 'calculator-container'
     })

@@ -12,3 +12,7 @@
     
     border: solid 1px #3e3d3f;
 }
+
+.input.error{
+    border-color: red;
+}

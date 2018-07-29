@@ -31,10 +31,36 @@ var AbstractComponent = function (config) {
         me.template = content.trim();
         me.render();
     })
-    Store.subscribe(this.updateBasedOnState.bind(this));
+    this.props = this.mapStateToProps();
 
+    Store.subscribe(this.updateBasedOnState.bind(this));
+    
 
 }
+/**
+ * Create a props to state map.
+ * @template
+ */
+AbstractComponent.prototype.mapStateToProps = function(){}
+
+/**
+ * Does a shallow compare between two objects and return true if they are are equal, false otherwise.
+ * @returns {boolean}
+ */
+AbstractComponent.prototype.didPropsChanged = function(oldProps,newProps){
+    var change = false;
+    Object.keys(oldProps).forEach(function(prop){
+        change = change || (oldProps[prop] !== newProps[prop]);
+        if(change){
+            return false;
+        }
+        
+    });
+
+    return change;
+
+}
+
 
 AbstractComponent.prototype.getState = function () {
     return this.state;

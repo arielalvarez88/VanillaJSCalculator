@@ -34,27 +34,27 @@ var AbstractComponent = function (config) {
     this.props = this.mapStateToProps();
 
     Store.subscribe(this.updateBasedOnState.bind(this));
-    
+
 
 }
 /**
  * Create a props to state map.
  * @template
  */
-AbstractComponent.prototype.mapStateToProps = function(){}
+AbstractComponent.prototype.mapStateToProps = function () { return {};}
 
 /**
  * Does a shallow compare between two objects and return true if they are are equal, false otherwise.
  * @returns {boolean}
  */
-AbstractComponent.prototype.didPropsChanged = function(oldProps,newProps){
+AbstractComponent.prototype.didPropsChanged = function (oldProps, newProps) {
     var change = false;
-    Object.keys(oldProps).forEach(function(prop){
+    Object.keys(oldProps).forEach(function (prop) {
         change = change || (oldProps[prop] !== newProps[prop]);
-        if(change){
+        if (change) {
             return false;
         }
-        
+
     });
 
     return change;
@@ -85,15 +85,26 @@ AbstractComponent.prototype.getTemplateUrl = function () { };
 AbstractComponent.prototype.render = function () {
     var parent = this.getParent()
     var html = this.template;
-    html = html.format(this.getState());
+    html = html.format(this.getRenderProps());
     parent.innerHTML = html;
     this.el = parent.firstChild
-    this.createChildren();    
+    this.createChildren();
     this.attachListenersToEvents(this.el);
-    
-    
+
+
 }
 
+
+/**
+ * This method is meant to be overwritten in child classes.
+ * @template
+ */
+AbstractComponent.prototype.getRenderProps = function () {
+    var stateAndProps = Object.assign({}, this.getState());
+    stateAndProps = Object.assign(stateAndProps, this.mapStateToProps());
+    return stateAndProps;
+
+}
 
 /**
  * This method is meant to be overwritten in child classes.

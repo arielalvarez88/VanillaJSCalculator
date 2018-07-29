@@ -15,7 +15,7 @@ RequiredValidationRule.validate = function(value){
     if(value !== '' && value !== null){
         return [];
     }else{
-        return ['This field is required'];   
+        return ['Mandatory field'];   
     }
     
 

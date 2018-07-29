@@ -23,11 +23,23 @@ Calculator.prototype = Object.create(AbstractComponent.prototype);
  * @override
  */
 Calculator.prototype.mapStateToProps = function () {
-    var storeState = Store.getState();
+    var storeState = Store.getState(),
+        generateErrorHtml = function (/**@param {String[]} errors**/ errors) {
+            return errors.reduce(function (acc, errorMsg) {
+                return acc + `<p>${errorMsg}</p>`;
+            }, "");
+        };
+
     return {
         "loanAmount": storeState.loanAmount.value,
         "anualTax": storeState.anualTax.value,
-        "anualInsurance": storeState.anualInsurance.value
+        "anualInsurance": storeState.anualInsurance.value,
+        "loanAmountHasError": storeState.loanAmount.hasError,
+        "anualTaxHasError": storeState.anualTax.hasError,
+        "anualInsuranceHasError": storeState.anualInsurance.hasError,
+        "loanAmountErrors": generateErrorHtml(storeState.loanAmount.errors),
+        "anualTaxErrors": generateErrorHtml(storeState.anualTax.errors),
+        "anualInsuranceErrors": generateErrorHtml(storeState.anualInsurance.errors)
     }
 }
 
@@ -58,6 +70,25 @@ Calculator.prototype.updateBasedOnState = function () {
         resultsContainer.className = resultsContainer.className + " collapsed";
 
     }
+    this.updateErrors();
+
+}
+/**
+ * Show error messages
+ */
+Calculator.prototype.updateErrors = function () {
+    var loanAmountErrorsContainer = this.el.getElementsByClassName("loan-amount-errors")[0],
+        anualTaxErrorsContainer = this.el.getElementsByClassName("anual-tax-errors")[0],
+        anualInsuranceErrorsContainer = this.el.getElementsByClassName("anual-insurance-errors")[0];
+
+    loanAmountErrorsContainer.setAttribute("visible", this.props.loanAmountHasError);
+    anualTaxErrorsContainer.setAttribute("visible", this.props.anualTaxHasError);
+    anualInsuranceErrorsContainer.setAttribute("visible", this.props.anualInsuranceHasError);
+
+
+    loanAmountErrorsContainer.innerHTML = this.props.loanAmountErrors;
+    anualTaxErrorsContainer.innerHTML = this.props.anualTaxErrors;
+    anualInsuranceErrorsContainer.innerHTML = this.props.anualInsuranceErrors;
 
 }
 
@@ -126,10 +157,11 @@ Calculator.prototype.validate = function () {
         hasErrors = Object.keys(validationResults).length > 0,
         fieldNames = Object.keys(vals);
 
-    this.clearPreviousErrors(fieldNames);
+
+    this.updateStateErrors(fieldNames, validationResults);
     if (hasErrors) {
         Store.dispatch({ type: Actions.SET_CALC_ERROR });
-        this.setFieldErrors(validationResults);
+
     } else {
         Store.dispatch({ type: Actions.CLEAR_CALC_ERROR });
     }
@@ -137,24 +169,23 @@ Calculator.prototype.validate = function () {
 
 }
 
-Calculator.prototype.clearPreviousErrors = function (fieldNames) {
-    fieldNames.forEach(function (fieldName) {
-        Store.dispatch({ type: Actions.CLEAR_INPUT_ERROR, keyInStore: fieldName });
-    })
-}
 /**
  * 
  * 
- * 
+ * @param {String[]} fieldNames
  * @param {Object.<string, String[]>} validationResults Field name to errors
  */
-Calculator.prototype.setFieldErrors = function (validationResults) {
-    for (var fieldName in validationResults) {
-        if (!validationResults.hasOwnProperty(fieldName)) {
-            continue;
+Calculator.prototype.updateStateErrors = function (allFieldNames, validationResults) {
+    allFieldNames.forEach(function (fieldName) {
+        var fieldHasError = fieldName in validationResults;
+
+        if (fieldHasError) {
+            Store.dispatch({ type: Actions.SET_INPUT_ERROR, errors: validationResults[fieldName], keyInStore: fieldName });
+        } else {
+            Store.dispatch({ type: Actions.CLEAR_INPUT_ERROR, keyInStore: fieldName });
         }
-        Store.dispatch({ type: Actions.SET_INPUT_ERROR, errors: validationResults[fieldName], keyInStore: fieldName });
-    }
+
+    });
 }
 
 /**

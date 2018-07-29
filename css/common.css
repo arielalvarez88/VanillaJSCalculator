@@ -17,7 +17,9 @@ html {
     margin-top: 20px;
 }
 
-
+[visible=false]{
+    display: none;
+}
 
 textarea,
 select,
@@ -25,7 +27,11 @@ input,
 button {
     outline: none;
 }
-
+.error-message{
+    color: #da3535;
+    font-size: 0.71rem;
+    font-weight: bold;
+}
 .field {
     display: table;
     width: 100%;

@@ -3,23 +3,28 @@ var calcReducer = function (state, action) {
     var defaultState = {
         rateOfIntrest: {
             value: 0.1,
-            hasError: false
+            hasError: false,
+            errors: []
         },
         yearsOfMortgage: {
             value: 10,
-            hasError: false
+            hasError: false,
+            errors: []
         },
         loanAmount: {
             value: null,
-            hasError: false
+            hasError: false,
+            errors: []
         },
         anualTax: {
             value: null,
-            hasError: false
+            hasError: false,
+            errors: []
         },
         anualInsurance: {
             value: null,
-            hasError: false
+            hasError: false,
+            errors: []
         },
         principleAndInterest: null,
         tax: null,
@@ -60,7 +65,8 @@ var calcReducer = function (state, action) {
             var valsToChange = {};
             valsToChange[action.keyInStore] = {
                 value: action.value,
-                hasError: state[action.keyInStore].hasError
+                hasError: state[action.keyInStore].hasError,
+                errors: state[action.keyInStore].errors
             }
             return getNewState(state, valsToChange);
         case Actions.SET_INPUT_ERROR:
@@ -75,7 +81,8 @@ var calcReducer = function (state, action) {
             var valsToChange = {};
             valsToChange[action.keyInStore] = {
                 value: state[action.keyInStore].value,
-                hasError: false
+                hasError: false,
+                errors: []
             }
             return getNewState(state, valsToChange);
         case Actions.CALCULATE:

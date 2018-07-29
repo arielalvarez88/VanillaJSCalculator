@@ -27,15 +27,23 @@
                 <label class="number-input-label">Loan amount</label>
                 <div id="loan-amount">
                 </div>
+                <div class="error-message">
+
+                    <div class="loan-amount-errors" visible="{loanAmountHasError}">{loanAmountErrors}</div>
+                </div>
             </div>
 
 
             <div class="row">
 
                 <div class="col-6 anual-tax-container">
-                    <label for="anual-insurance-input" class="number-input-label">Anual Tax</label>
+                    <label for="anual-tax-input" class="number-input-label">Anual Tax</label>
                     <div id="anual-tax">
                     </div>
+                    <div class="error-message">
+                        <div class="anual-tax-errors" visible="{anualTaxHasError}">{anualTaxErrors}</div>
+                    </div>
+
                 </div>
 
 
@@ -43,6 +51,9 @@
                 <div class="col-6 anual-insurance-container">
                     <label for="anual-insurance-input" class="number-input-label">Anual Insurance</label>
                     <div id="anual-insurance">
+                    </div>
+                    <div class="error-message">
+                        <div class="anual-insurance-errors" visible="{anualInsuranceHasError}">{anualInsuranceErrors}</div>
                     </div>
                 </div>
 

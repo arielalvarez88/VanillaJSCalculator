@@ -15,21 +15,20 @@ var Slider = function (config) {
     if (!validConfig) {
         throw new Error("Invalid configuration for Slider.")
     }
-    AbstractComponent.call(this, config); //Call parent class constructor
     /**
-     * @property 
-     */
+    * @property 
+    */
     this.state = ObjectUtils.assign({
         minVal: 0,
         maxVal: 40,
         step: 1,
-        value: Store.getState()[this.keyInStore]
+        value: Store.getState()[config.keyInStore].value
     }, config);
 
-
-
-
+    AbstractComponent.call(this, config); //Call parent class constructor
 }
+
+
 
 Slider.prototype = Object.create(AbstractComponent.prototype);
 
@@ -41,7 +40,7 @@ Slider.prototype.updateBasedOnState = function () {
     var state = Store.getState(),
         digitalValue = this.el.getElementsByClassName("digital-value")[0];
 
-    this.value = state[this.keyInStore]
+    this.value = state[this.keyInStore];
     digitalValue.getElementsByTagName("input")[0].value = this.value;
 
 }
@@ -75,7 +74,7 @@ Slider.prototype.createChildren = function () {
 
     for (var i = 0; i < inputContainers.length; i++) {
         new Input({
-            keyInStore: this.keyInStore,            
+            keyInStore: this.keyInStore,
             parent: inputContainers[i]
         })
     }

@@ -22,6 +22,8 @@ var Input = function (config) {
      */
     this.inputId = config.inputId || '';
 
+    
+
 }
 
 Input.prototype = Object.create(AbstractComponent.prototype);

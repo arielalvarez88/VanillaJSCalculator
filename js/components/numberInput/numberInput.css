@@ -21,3 +21,6 @@
 .number-input input[type=number] {
     -moz-appearance:textfield;
 }
+.number-input input{
+    text-align: center;
+}

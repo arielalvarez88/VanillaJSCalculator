@@ -4,7 +4,7 @@ var NumberInput = function (config) {
 
     Input.call(this, config); //Call parent class constructor
 
-
+    
 }
 
 NumberInput.prototype = Object.create(Input.prototype);

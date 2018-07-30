@@ -20,3 +20,6 @@
     }
 }
 
+.number-input input{
+    text-align: left;
+}

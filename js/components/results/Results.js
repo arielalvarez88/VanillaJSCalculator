@@ -59,7 +59,7 @@ Results.prototype.updateValueFields = function () {
     for (var i = 0; i < allVariableContainers.length; i++) {
         container = allVariableContainers[i];
         fieldInProps = container.getAttribute("data-field");
-        container.innerHTML = this.props[fieldInProps];
+        container.innerHTML = "$" + this.props[fieldInProps];
         visibleAttrVal = this.props.notFirstCalculation;
         container.setAttribute("visible", visibleAttrVal);
     }

@@ -1,7 +1,4 @@
-.row > *{
-    /* padding: 10px; */
-}
-.row{
+.row {
     display: flex;
     overflow: hidden;
     clear: both;
@@ -10,6 +7,6 @@
     /* width: 100%; */
 }
 
-.col-6{
-    /* width: 50%; */
+.not-aligned {
+    align-items: baseline;
 }

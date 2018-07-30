@@ -22,6 +22,18 @@ var AbstractComponent = function (config) {
     this.parentId = config.parentId;
 
     /**
+     * True if the propert
+     * @property {boolean}
+     */
+    this.propsChanged = false;
+
+    /**
+     * Save references to child components in this property.
+     * @property {<string,AbstractComponent>} childComponents
+     */
+    this.childComponents = {};
+
+    /**
     * Key in the state of the Store to save the value of this component.
     * @property {String}
     */
@@ -33,15 +45,37 @@ var AbstractComponent = function (config) {
     })
     this.props = this.mapStateToProps();
 
-    Store.subscribe(this.updateBasedOnState.bind(this));
+    Store.subscribe(this.onStoreChanged.bind(this));
 
+
+}
+
+/**
+ * Called when the state in the store changes.
+ */
+AbstractComponent.prototype.onStoreChanged = function () {
+    var oldProps = this.props;
+    this.props = this.mapStateToProps();
+    this.propsChanged = this.didPropsChanged(oldProps, this.props);
+    this.update();
+    /**
+     * TODO: We could avoid modifying DOM too much with this pseudo-code if the app becomes slow. It will require to modify several components though so it changes the props instead of the state.:
+     * 
+     * var oldProps = this.props,
+        newProps = this.mapStateToProps(),
+        didPropsChanged = this.didPropsChanged(oldProps, newProps);
+
+    this.props = newProps;
+    if (didPropsChanged) {
+        this.update();
+    }**/
 
 }
 /**
  * Create a props to state map.
  * @template
  */
-AbstractComponent.prototype.mapStateToProps = function () { return {};}
+AbstractComponent.prototype.mapStateToProps = function () { return {}; }
 
 /**
  * Does a shallow compare between two objects and return true if they are are equal, false otherwise.
@@ -70,7 +104,7 @@ AbstractComponent.prototype.getState = function () {
  * Update dom based on state.
  * @template 
  */
-AbstractComponent.prototype.updateBasedOnState = function () { }
+AbstractComponent.prototype.update = function () { }
 
 /**
  * Return the absolute url of the html template for this component.
@@ -107,10 +141,12 @@ AbstractComponent.prototype.getRenderProps = function () {
 }
 
 /**
- * This method is meant to be overwritten in child classes.
+ * This method is meant to be overwritten in child classes. Use to attach listeners to the 
+ * dom nodes after the component is rendered.
  * @template
+ * @param {HTMLElement} rootElement
  */
-AbstractComponent.prototype.attachListenersToEvents = function () {
+AbstractComponent.prototype.attachListenersToEvents = function (rootElement) {
 }
 
 /**

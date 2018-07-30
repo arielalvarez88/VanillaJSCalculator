@@ -57,8 +57,7 @@ button {
     margin: 20px 0;
 }
 
-#calculator-container {
-}
+#calculator-container {}
 
 /* xs devices*/
 
@@ -74,11 +73,19 @@ button {
     }
 }
 
+
+.gutter {
+    margin-top: 10px;
+}
 /* s devices*/
 
 @media only screen and (min-width: 768px) {
     #content {
         padding: 0 40px;
+    }
+    .gutter {
+        margin-left: 3%;
+        margin-right: 3%;
     }
 }
 
@@ -91,15 +98,10 @@ button {
     html {
         font-size: 14px;
     }
-    .gutter{
-        padding: 20px;
+    .gutter {
+        margin-left: 3%;
+        margin-right: 3%;
     }
-}
-
-.gutter {
-    /* max-width: 930px; */
-    margin-left: auto;
-    margin-right: auto;
 }
 
 input {

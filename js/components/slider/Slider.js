@@ -32,7 +32,7 @@ var Slider = function (config) {
 
 Slider.prototype = Object.create(AbstractComponent.prototype);
 
-Slider.prototype.updateBasedOnState = function () {
+Slider.prototype.update = function () {
 
     if (!this.el) {
         return;
@@ -53,20 +53,29 @@ Slider.prototype.onInput = function (ev) {
 
     Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: Number(ev.target.value) })
 }
-Slider.prototype.attachListenersToEvents = function (nodes) {
-    var input = nodes.getElementsByClassName("range-input");
+/**
+ *@override
+ */
+Slider.prototype.attachListenersToEvents = function (rootElement) {
+    var input = rootElement.getElementsByClassName("range-input");
     if (BrowserUtils.isIE()) {
         input[0].onchange = this.onInput.bind(this);
     } else {
         input[0].oninput = this.onInput.bind(this);
     }
+    
+    this.listenToSliderDrag(rootElement);
 
 
 }
 
-Slider.prototype.render = function () {
-    AbstractComponent.prototype.render.call(this);
-    var rangeInput = this.el.getElementsByClassName('range-input')[0];
+/**
+ * Updates the style of the input based on the value to achieve the progress style in webkit.
+ * 
+ * @param {HTMLElement} rootElement
+ */
+Slider.prototype.listenToSliderDrag = function (rootElement) {
+    var rangeInput = rootElement.getElementsByClassName('range-input')[0];
 
     document.documentElement.classList.add('js');
 
@@ -74,6 +83,7 @@ Slider.prototype.render = function () {
         rangeInput.style.setProperty('--val', + rangeInput.value)
     }, false);
 }
+
 /**
  * 
  * Create children components in this method.

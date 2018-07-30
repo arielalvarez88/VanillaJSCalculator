@@ -17,8 +17,7 @@
     border-bottom: solid 1px #b2b2b2;
 }
 
-.results .detail-title,
-.results .detail-value {
+.results .detail *:not([visible=false]) {
     display: table-cell;
     vertical-align: middle;
     padding: 16px 0;
@@ -39,4 +38,12 @@
 .results h3 {
     font-weight: normal;
     font-size: 1rem;
+}
+
+.results .money-placeholder{
+    color: #3e3d3f;
+    font-size: 1.29rem;
+    opacity: 0.2;
+    letter-spacing: normal;
+
 }

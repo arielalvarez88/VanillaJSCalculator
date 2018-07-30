@@ -26,13 +26,14 @@ var calcReducer = function (state, action) {
             hasError: false,
             errors: []
         },
-        principleAndInterest: null,
+        principleAndInterests: null,
         tax: null,
         insurance: null,
-        totalMontlyPayment: null,
+        totalMonthlyPayment: null,
         showingResults: false,
         calcInError: false,
-        firstSubmit: true
+        firstSubmit: true,
+        firstCalculation: true
     }, getNewState = function (state, valsToChange) {
         var newState = ObjectUtils.assign({}, state);
         ObjectUtils.assign(newState, valsToChange);
@@ -45,11 +46,25 @@ var calcReducer = function (state, action) {
             var valsToChange = {
                 firstSubmit: false
             };
-            return getNewState(state, valsToChange);      
-        case Actions.CALC_SUBMIT:
-            var valsToChange = {
-                firstSubmit: false
-            };
+            return getNewState(state, valsToChange);
+        case Actions.CALCULATE:
+            var interestRate = state.rateOfIntrest.value,
+                loanAmount = state.loanAmount.value,
+                annualTax = state.anualInsurance.value,
+                yearsOfMortgage = state.yearsOfMortgage.value,
+                anualInsurance = state.anualInsurance.value,
+                principleAndInterests = ((interestRate / 100) / 12) * loanAmount / (1 - Math.pow((1 + ((interestRate / 100) / 12)), - yearsOfMortgage * 12)),
+                tax = annualTax / 12,
+                insurance = anualInsurance / 12,
+                totalMonthlyPayment = principleAndInterests + tax + insurance,
+                valsToChange = {
+                    showingResults: true,
+                    firstCalculation: false,
+                    principleAndInterests: principleAndInterests.toFixed(2),
+                    tax: tax.toFixed(2),
+                    insurance: insurance.toFixed(2),
+                    totalMonthlyPayment: totalMonthlyPayment.toFixed(2)
+                };
             return getNewState(state, valsToChange);
         case Actions.SET_CALC_ERROR:
             var valsToChange = {

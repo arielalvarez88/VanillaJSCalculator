@@ -16,7 +16,7 @@ var Input = function (config) {
 
 Input.prototype = Object.create(AbstractComponent.prototype);
 
-Input.prototype.updateBasedOnState = function () {
+Input.prototype.update = function () {
 
     if (!this.el) {
         return;

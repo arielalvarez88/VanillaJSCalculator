@@ -26,7 +26,7 @@ Calculator.prototype.mapStateToProps = function () {
     var storeState = Store.getState(),
         generateErrorHtml = function (/**@param {String[]} errors**/ errors) {
             return errors.reduce(function (acc, errorMsg) {
-                return acc + "<p>"+errorMsg+"</p>";
+                return acc + "<p>" + errorMsg + "</p>";
             }, "");
         };
 
@@ -39,7 +39,8 @@ Calculator.prototype.mapStateToProps = function () {
         "anualInsuranceHasError": storeState.anualInsurance.hasError,
         "loanAmountErrors": generateErrorHtml(storeState.loanAmount.errors),
         "anualTaxErrors": generateErrorHtml(storeState.anualTax.errors),
-        "anualInsuranceErrors": generateErrorHtml(storeState.anualInsurance.errors)
+        "anualInsuranceErrors": generateErrorHtml(storeState.anualInsurance.errors),
+        "buttonText": storeState.firstCalculation ? "Calculate" : "Recalculate"
     }
 }
 
@@ -47,7 +48,7 @@ Calculator.prototype.mapStateToProps = function () {
 /**
  * @override
  */
-Calculator.prototype.updateBasedOnState = function () {
+Calculator.prototype.update = function () {
     var oldProps = this.props;
     this.props = this.mapStateToProps();
     if (!this.el) {
@@ -57,7 +58,7 @@ Calculator.prototype.updateBasedOnState = function () {
     var resultsContainer = this.el.getElementsByClassName("results-section")[0];
     var state = Store.getState();
 
-    if (!state.firstSubmit && this.didPropsChanged(oldProps, this.props)) {
+    if (!state.firstSubmit && this.propsChanged) {
         this.validate();
     }
     if (state.showingResults) {
@@ -72,8 +73,22 @@ Calculator.prototype.updateBasedOnState = function () {
 
     }
     this.updateErrors();
+    this.updateButtonText(state);
 
 }
+/**
+ * Change button text to Recalculate after first calculation.
+ */
+Calculator.prototype.updateButtonText = function (state) {
+
+    var buttonText = state.firstCalculation ? "Calculate" : "Recalculate",
+        button = this.el.querySelector(".submit-button");
+
+    button.innerHTML = this.props.buttonText;
+
+
+}
+
 /**
  * Show error messages
  */

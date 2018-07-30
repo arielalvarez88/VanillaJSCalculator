@@ -1,14 +1,14 @@
+.dollar-input {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
 /* from xs devices to medium devices*/
 
 @media only screen and (max-width: 992px) {
     .dollar-input.input {
-        padding: 0 calc(1rem + 15px);
-    }
-    .dollar-input .dollar-sign {
-        float: left;
-        display: inline;
-        margin-top: -28px;
-        margin-left: -1rem;
+        padding: 0 15px;
     }
 }
 
@@ -16,12 +16,6 @@
 
 @media only screen and (min-width: 992px) {
     .dollar-input.input {
-        padding: 0 calc(1rem + 25px);
-    }
-    .dollar-input .dollar-sign {
-        float: left;
-        display: inline;
-        margin-top: -30px;
-        margin-left: -1rem;
+        padding: 0 25px;
     }
 }

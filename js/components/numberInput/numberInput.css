@@ -17,3 +17,7 @@
 .number-input input::-ms-clear {
     display: none;
 }
+
+.number-input input[type=number] {
+    -moz-appearance:textfield;
+}

@@ -3,6 +3,7 @@
 var Input = function (config) {
 
     AbstractComponent.call(this, config); //Call parent class constructor
+    this.valueFromStore = config.valueFromStore || false;
     /**
      * @property 
      */
@@ -11,6 +12,10 @@ var Input = function (config) {
         errorCls: Store.getState()[this.keyInStore].hasError ? "error" : ""
     };
 
+    /**
+     * Reference to the HTMLElement of type input in this component.
+     */
+    this.input = null;
 
 }
 
@@ -28,7 +33,10 @@ Input.prototype.update = function () {
         value: state[this.keyInStore].value,
         errorCls: state[this.keyInStore].hasError ? "error" : ""
     }
-    input.value = this.state.value;
+    if(this.valueFromStore){
+        input.value = this.state.value;
+    }
+    
     if (this.state.errorCls === '') {
         inputContainer.className = inputContainer.className.replace("error", "");
     } else if (!inputContainer.className.contains("error")) {

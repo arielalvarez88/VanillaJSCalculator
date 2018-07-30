@@ -1,6 +1,27 @@
-.dollar-input .dollar-sign{
-    /* display: inline-block; */
-    /* vertical-align: middle; */
-    /* align-self: flex-start; */
+/* from xs devices to medium devices*/
+
+@media only screen and (max-width: 992px) {
+    .dollar-input.input {
+        padding: 0 calc(1rem + 15px);
+    }
+    .dollar-input .dollar-sign {
+        float: left;
+        display: inline;
+        margin-top: calc(-1rem - 16.5px);
+        margin-left: -1rem;
+    }
 }
 
+/* big devices */
+
+@media only screen and (min-width: 992px) {
+    .dollar-input.input {
+        padding: 0 calc(1rem + 25px);
+    }
+    .dollar-input .dollar-sign {
+        float: left;
+        display: inline;
+        margin-top: calc(-1rem - 16.5px);
+        margin-left: -1rem;
+    }
+}

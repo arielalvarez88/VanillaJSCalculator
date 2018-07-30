@@ -112,7 +112,7 @@
     height: 289px;
 }
 
-/* xs devices and up*/
+/* from xs devices to medium devices*/
 
 @media only screen and (max-width: 992px) {
     .calculator .results-section .results {
@@ -130,8 +130,6 @@
         padding: 20px;
     }
 }
-
-
 
 
 /* big devices */

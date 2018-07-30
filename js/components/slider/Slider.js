@@ -96,8 +96,9 @@ Slider.prototype.createChildren = function () {
     for (var i = 0; i < inputContainers.length; i++) {
         new Input({
             keyInStore: this.keyInStore,
-            parent: inputContainers[i]
-        })
+            parent: inputContainers[i],
+            valueFromStore: true
+        });
     }
 
 }

@@ -21,8 +21,22 @@ NumberInput.prototype.onInput = function (ev) {
     Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: newVal });
 }
 
+
+
+NumberInput.prototype.onKeyPress = function (ev) {
+    var isNumber = ev.key.search(/\d/) >= 0,
+        isNumberPuntuation = ev.key.search(/\./) >= 0;
+
+    if (!isNumber && !isNumberPuntuation) {
+        ev.preventDefault();
+
+    }
+
+}
+
 NumberInput.prototype.attachListenersToEvents = function (nodes) {
     Input.prototype.attachListenersToEvents.call(this, nodes);
-    var input = nodes.getElementsByTagName("input")[0];
-    input.oninput = this.onInput.bind(this);
+    this.input.onkeypress = this.onKeyPress.bind(this);
+    this.input.oninput = this.onInput.bind(this);
 }
+

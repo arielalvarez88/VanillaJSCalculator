@@ -2,7 +2,7 @@
 /** 
  * Input that accepts only numeric values and the "." char.
  * @class NumberInput
- * @param {Object} config 
+ * @param {InputConfig} config 
  */
 var NumberInput = function (config) {
 

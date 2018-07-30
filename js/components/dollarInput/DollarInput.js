@@ -1,7 +1,7 @@
 "use strict";
 /**
  * @class DollarInput
- * @param {Object} config 
+ * @param {InputConfig} config 
  */
 var DollarInput = function (config) {
 

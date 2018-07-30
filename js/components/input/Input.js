@@ -3,10 +3,12 @@
  * This class provides an input component that communicates with the store and
  * provides styling.
  * 
+ *      
+ * @typedef {{keyInStore: string, inputId: string}} InputConfig
  * @class Input
- * @param {Object} config 
- * @param {String} config.keyInStore The field in the store to update when this input changes.
- * @param {Object} config.inputId The id of the input element. 
+ * @param {InputConfig} config 
+ * @param {string} config.keyInStore The field in the store to update when this input changes.
+ * @param {string} config.inputId The id of the input element. 
  *
  */
 var Input = function (config) {

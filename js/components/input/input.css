@@ -8,8 +8,7 @@
 
 .input.focus {
     box-shadow: 0 0 4px 0 rgba(62, 61, 63, 0.62);
-    background-color: #ffffff;
-    
+    background-color: #ffffff;    
     border: solid 1px #3e3d3f;
 }
 

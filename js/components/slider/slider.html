@@ -1,10 +1,12 @@
 <div class="slider">
     <div class="row">
-            <span class="range-number">{minVal}</span>
-            <input class="range-input" type="range" min="{minVal}" max="{maxVal}" step="{step}" value="{value}"/>
-            <span class="range-number">{maxVal}</span>
-            <div class="input-container digital-value"></div>
-            
+        <span class="range-number">{minVal}</span>
+        <input class="range-input" type="range" min="{minVal}" max="{maxVal}" step="{step}" value="{value}" style="--min: {minVal};
+            --max: {maxVal};
+            --val: {value};" />
+        <span class="range-number">{maxVal}</span>
+        <div class="input-container digital-value"></div>
+
     </div>
-    
+
 </div>

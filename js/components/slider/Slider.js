@@ -63,6 +63,17 @@ Slider.prototype.attachListenersToEvents = function (nodes) {
 
 
 }
+
+Slider.prototype.render = function () {
+    AbstractComponent.prototype.render.call(this);
+    var rangeInput = this.el.getElementsByClassName('range-input')[0];
+
+    document.documentElement.classList.add('js');
+
+    rangeInput.addEventListener('input', function (e) {
+        rangeInput.style.setProperty('--val', + rangeInput.value)
+    }, false);
+}
 /**
  * 
  * Create children components in this method.
@@ -80,3 +91,4 @@ Slider.prototype.createChildren = function () {
     }
 
 }
+

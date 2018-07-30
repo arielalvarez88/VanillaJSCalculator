@@ -1,5 +1,3 @@
-
-
 * {
     padding: 0;
     margin: 0;
@@ -17,7 +15,7 @@ html {
     margin-top: 20px;
 }
 
-[visible=false]{
+[visible=false] {
     display: none;
 }
 
@@ -27,11 +25,13 @@ input,
 button {
     outline: none;
 }
-.error-message{
+
+.error-message {
     color: #da3535;
     font-size: 0.71rem;
     font-weight: bold;
 }
+
 .field {
     display: table;
     width: 100%;
@@ -55,6 +55,9 @@ button {
     font-size: 14px;
     border-radius: 4px;
     margin: 20px 0;
+}
+
+#calculator-container {
 }
 
 /* xs devices*/
@@ -88,10 +91,13 @@ button {
     html {
         font-size: 14px;
     }
+    .gutter{
+        padding: 20px;
+    }
 }
 
 .gutter {
-    max-width: 850px;
+    /* max-width: 930px; */
     margin-left: auto;
     margin-right: auto;
 }

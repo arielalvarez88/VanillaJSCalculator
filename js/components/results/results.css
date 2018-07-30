@@ -1,4 +1,42 @@
 .results {
     background-color: #E5F4F9;
-    height: 100%;
+    color: #3e3d3f;
+}
+
+.results ul {
+    list-style-type: none;
+    display: table;
+    width: 100%;
+}
+
+.results ul li {
+    display: table-row;
+}
+
+.results ul li:not(:last-child) * {
+    border-bottom: solid 1px #b2b2b2;
+}
+
+.results .detail-title,
+.results .detail-value {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 16px 0;
+}
+
+.results .detail-value {
+    text-align: right;
+}
+
+.results>h2 {
+    font-size: 1.42rem;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.results h3 {
+    font-weight: normal;
+    font-size: 1rem;
 }

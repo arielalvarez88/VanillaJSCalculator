@@ -100,8 +100,8 @@ AbstractComponent.prototype.render = function () {
  * @template
  */
 AbstractComponent.prototype.getRenderProps = function () {
-    var stateAndProps = Object.assign({}, this.getState());
-    stateAndProps = Object.assign(stateAndProps, this.mapStateToProps());
+    var stateAndProps = ObjectUtils.assign({}, this.getState());
+    stateAndProps = ObjectUtils.assign(stateAndProps, this.mapStateToProps());
     return stateAndProps;
 
 }

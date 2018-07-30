@@ -26,7 +26,7 @@ Calculator.prototype.mapStateToProps = function () {
     var storeState = Store.getState(),
         generateErrorHtml = function (/**@param {String[]} errors**/ errors) {
             return errors.reduce(function (acc, errorMsg) {
-                return acc + `<p>${errorMsg}</p>`;
+                return acc + "<p>"+errorMsg+"</p>";
             }, "");
         };
 
@@ -63,11 +63,12 @@ Calculator.prototype.updateBasedOnState = function () {
     if (state.showingResults) {
 
         resultsContainer.className = resultsContainer.className.replace("collapsed", "");
-        resultsContainer.className = resultsContainer.className + " expanded";
+
+        resultsContainer.className = resultsContainer.className.contains("expanded") ? resultsContainer.className : resultsContainer.className + " expanded";
     } else {
 
         resultsContainer.className = resultsContainer.className.replace("expanded", "");
-        resultsContainer.className = resultsContainer.className + " collapsed";
+        resultsContainer.className = resultsContainer.className.contains("collapsed") ? resultsContainer.className : resultsContainer.className + " collapsed";
 
     }
     this.updateErrors();

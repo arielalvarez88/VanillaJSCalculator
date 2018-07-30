@@ -1,11 +1,13 @@
 "use strict";
 
 /**
- * 
+ * Component to select a value in a range input. Shows the value in a normal input..
+ * @class Slider
  * @param {Object} config
  * @param {Number} config.minVal 
  * @param {Number} config.maxVal
- * @param {Number} config.step 
+ * @param {Number} config.step
+ * @param {String} config.keyInStore
  * 
  */
 var Slider = function (config) {
@@ -32,6 +34,9 @@ var Slider = function (config) {
 
 Slider.prototype = Object.create(AbstractComponent.prototype);
 
+/**
+ * @override
+ */
 Slider.prototype.update = function () {
 
     if (!this.el) {
@@ -44,11 +49,15 @@ Slider.prototype.update = function () {
     digitalValue.getElementsByTagName("input")[0].value = this.value;
 
 }
-
+/**
+ * @override
+ */
 Slider.prototype.getTemplateUrl = function () {
     return "/js/components/slider/slider.html";
 }
-
+/**
+ * Dispatch value from slider to store.
+ */
 Slider.prototype.onInput = function (ev) {
 
     Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: Number(ev.target.value) })
@@ -63,7 +72,7 @@ Slider.prototype.attachListenersToEvents = function (rootElement) {
     } else {
         input[0].oninput = this.onInput.bind(this);
     }
-    
+
     this.listenToSliderDrag(rootElement);
 
 

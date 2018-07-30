@@ -8,12 +8,18 @@ function dynamicallyLoadScript(url, async) {
 
 var Store;
 
-var onload = function(){
+var onload = function () {
+    /**
+     * Initiate app state
+     */
     Store = Redux.createStore(calcReducer);
+    /**
+     * Create inital component.
+     */
     new Calculator({
         parentId: 'calculator-container'
     })
-  
+
 }
 
 
@@ -21,4 +27,4 @@ var onload = function(){
 document.body.onload = onload;
 
 
-    
+

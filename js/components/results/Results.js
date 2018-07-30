@@ -1,6 +1,6 @@
 "use strict";
 /**
- * The results widget.
+ * Widget to show results of calculation to user.
  * @param {Object} config 
  */
 var Results = function (config) {
@@ -41,7 +41,9 @@ Results.prototype.update = function () {
 
 
 }
-
+/**
+ * Hide or show the placeholder that we show before initial calculation.
+ */
 Results.prototype.hideOrShowPlaceHolders = function () {
     var placeHolders = this.el.getElementsByClassName("money-placeholder");
 

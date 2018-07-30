@@ -1,4 +1,9 @@
 "use-strict";
+/**
+ * Has the logic to update the state of the app.
+ * @param {Object} state 
+ * @param {Object} action 
+ */
 var calcReducer = function (state, action) {
     var defaultState = {
         rateOfIntrest: {

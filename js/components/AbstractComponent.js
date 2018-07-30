@@ -1,4 +1,9 @@
 
+/** 
+ * Provides basic functionality to components.
+ * @class AbstractComponent
+ * @param {Object} config 
+ */
 var AbstractComponent = function (config) {
     var me = this;
     /**
@@ -29,7 +34,7 @@ var AbstractComponent = function (config) {
 
     /**
      * Save references to child components in this property.
-     * @property {<string,AbstractComponent>} childComponents
+     * @property {Object.<string,AbstractComponent>} childComponents
      */
     this.childComponents = {};
 

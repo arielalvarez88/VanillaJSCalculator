@@ -1,18 +1,13 @@
 "use strict";
 /**
- * The calculator widget. It contains everything related to the calculator.
+ * The Calculator widget. Control the events of calculator.
+ * @class Calculator
  * @param {Object} config 
  */
 var Calculator = function (config) {
 
     AbstractComponent.call(this, config); //Call parent class constructor
-    /**
-     * @property 
-     */
-    this.state = {
-        resultsCls: Store.getState().showingResults ? "expanded" : "collapsed"
-    };
-
+    
 
 }
 
@@ -40,7 +35,8 @@ Calculator.prototype.mapStateToProps = function () {
         "loanAmountErrors": generateErrorHtml(storeState.loanAmount.errors),
         "anualTaxErrors": generateErrorHtml(storeState.anualTax.errors),
         "anualInsuranceErrors": generateErrorHtml(storeState.anualInsurance.errors),
-        "buttonText": storeState.firstCalculation ? "Calculate" : "Recalculate"
+        "buttonText": storeState.firstCalculation ? "Calculate" : "Recalculate",
+        "resultsCls": storeState.showingResults ? "expanded" : "collapsed"
     }
 }
 
@@ -78,6 +74,7 @@ Calculator.prototype.update = function () {
 }
 /**
  * Change button text to Recalculate after first calculation.
+ * @param {Object} state The state from the store.
  */
 Calculator.prototype.updateButtonText = function (state) {
 
@@ -127,6 +124,10 @@ Calculator.prototype.attachListenersToEvents = function (nodes) {
     form.onsubmit = this.onSubmit.bind(this);
 }
 
+/**
+ * Handle submit of the widget. Run validation first.
+ * @param {Event} ev 
+ */
 Calculator.prototype.onSubmit = function (ev) {
     ev.preventDefault();
     Store.dispatch({ type: Actions.CALC_SUBMIT });
@@ -186,7 +187,7 @@ Calculator.prototype.validate = function () {
 }
 
 /**
- * 
+ * Update the state in the store with the errors from validation.
  * 
  * @param {String[]} fieldNames
  * @param {Object.<string, String[]>} validationResults Field name to errors

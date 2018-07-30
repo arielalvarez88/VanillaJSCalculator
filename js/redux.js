@@ -1,11 +1,15 @@
 "use strict";
+/**
+ * Simple implementation of Redux.
+ * Read more about Redux : https://redux.js.org/
+ */
 var Redux = {
     createStore: function (reducer) {
 
         var state;
         var listeners = [];
 
-        var store =  {
+        var store = {
 
             dispatch: function (action) {
 
@@ -20,7 +24,7 @@ var Redux = {
                 return state;
             },
 
-            subscribe: function(subscriber) {
+            subscribe: function (subscriber) {
                 listeners.push(subscriber);
 
                 return function () {
@@ -32,7 +36,7 @@ var Redux = {
 
 
         }
-        store.dispatch({type:'Init state'}); // Init store's state by dispatching initial action.
+        store.dispatch({ type: 'Init state' }); // Init store's state by dispatching initial action.
         return store;
     }
 }

@@ -226,18 +226,21 @@ Calculator.prototype.createChildren = function (nodes) {
 
     new DollarInput({
         keyInStore: 'loanAmount',
-        parentId: "loan-amount"
+        parentId: "loan-amount",
+        inputId: "loan-amount-input"
     })
 
 
     new DollarInput({
         keyInStore: 'anualTax',
-        parentId: 'anual-tax'
+        parentId: 'anual-tax',
+        inputId: "anual-tax-input"
     })
 
     new DollarInput({
         keyInStore: 'anualInsurance',
-        parentId: 'anual-insurance'
+        parentId: 'anual-insurance',
+        inputId: "anual-insurance-input"
     })
 
 

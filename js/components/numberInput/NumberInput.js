@@ -24,15 +24,18 @@ NumberInput.prototype.onInput = function (ev) {
 
 
 NumberInput.prototype.onKeyPress = function (ev) {
-    var isNumber = ev.key.search(/\d/) >= 0,
-        isNumberPuntuation = ev.key.search(/\./) >= 0;
+    var validInput = ev.key.search(/[\d\.]/) >= 0,
+        isNumberPuntuation = ev.key.search(/\./) >= 0,
+        isPointAndAlreadyHadPoint = (this.input.value !== "" && this.input.value.contains(".")) && isNumberPuntuation;
 
-    if (!isNumber && !isNumberPuntuation) {
+    if (!validInput || isPointAndAlreadyHadPoint) {
         ev.preventDefault();
 
     }
 
 }
+
+
 
 NumberInput.prototype.attachListenersToEvents = function (nodes) {
     Input.prototype.attachListenersToEvents.call(this, nodes);

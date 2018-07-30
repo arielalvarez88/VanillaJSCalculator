@@ -7,7 +7,7 @@
     .dollar-input .dollar-sign {
         float: left;
         display: inline;
-        margin-top: calc(-1rem - 16.5px);
+        margin-top: -28px;
         margin-left: -1rem;
     }
 }
@@ -21,7 +21,7 @@
     .dollar-input .dollar-sign {
         float: left;
         display: inline;
-        margin-top: calc(-1rem - 16.5px);
+        margin-top: -30px;
         margin-left: -1rem;
     }
 }

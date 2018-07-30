@@ -1,0 +1,19 @@
+/*
+* Removes the spin button from Chrome and Safari
+*/
+
+.number-input input::-webkit-outer-spin-button,
+.number-input input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+/*
+* Removes clear button from IE
+*/
+
+.number-input input::-ms-clear {
+    display: none;
+}

@@ -7,7 +7,7 @@
     display: none;
 }
 
-html {
+html, input {
     font-family: HelveticaNeue, Helvetica, Arial
 }
 

@@ -10,17 +10,14 @@
 
 @media only screen and (max-width: 600px) {
     .slider input[type=range] {
-        width: 263px;
-        height: 8px;
         border-radius: 100px;
-        
     }
     .slider .range-number {
         width: 18px;
     }
     .slider .digital-value {
         width: 50px;
-        height: 40px;
+
     }
 }
 @media only screen and (min-width: 601px) {
@@ -28,11 +25,11 @@
       border-radius: 100px;
   }
   .slider .range-number {
-      width: 18px;
+      width: 29px;
   }
   .slider .digital-value {
       width: 60px;
-      height: 45px;
+
   }
 }
 

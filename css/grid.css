@@ -1,12 +1,13 @@
 .row > *{
-    display: table-cell;
     /* padding: 10px; */
 }
 .row{
-    display: table;
+    display: flex;
     overflow: hidden;
     clear: both;
-    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    /* width: 100%; */
 }
 
 .col-6{

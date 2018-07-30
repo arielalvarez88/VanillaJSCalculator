@@ -36,11 +36,16 @@
 
 /*======End of Animations======*/
 
-
-.calculator{
+.calculator {
     overflow: hidden;
     padding: 4px;
 }
+
+.calculator .anual-tax-container,
+.calculator .anual-insurance-container {
+    width: 50%;
+}
+
 .calculator .calculator-section {
     z-index: 100000;
     position: relative;
@@ -130,11 +135,9 @@
 
 @media only screen and (min-width: 768px) {
     .calculator .results-section .results {
-
         height: 440px;
-        
     }
-    .calculator .results-section{
+    .calculator .results-section {
         width: auto;
         float: left;
         margin-top: 41px;

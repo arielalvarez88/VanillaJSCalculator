@@ -63,7 +63,6 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]::-moz-range-progress {
     background: #1091cc;
     height: 8px;
-
 }
 
 input[type=range]::-moz-range-track {
@@ -118,16 +117,103 @@ input[type=range]::-ms-thumb {
     cursor: pointer;
 }
 
-/* Chrome */
-
 input[type=range] {
     overflow: hidden;
     -webkit-appearance: none;
 }
 
 .slider .range-input {
-    /* width: -webkit-fill-available; */
     width: 100%;
 }
 
-/* Chrome */
+/*********** END Crossbrowser progress in input type=range from csstricks.com ***********/
+
+[type='range'] {
+    --range: calc(var(--max) - var(--min));
+    --ratio: calc((var(--val) - var(--min))/var(--range));
+    --sx: calc(.5*1.5em + var(--ratio)*(100% - 1.5em));
+    margin: 0;
+    padding: 0;
+    width: 12.5em;
+    height: 50px;
+    background: transparent;
+    font: 1em/1 arial, sans-serif;
+}
+
+[type='range'],
+[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+[type='range']::-webkit-slider-runnable-track {
+    box-sizing: border-box;
+    border: none;
+    width: 12.5em;
+    height: 0.25em;
+    background: #ccc;
+}
+
+.js [type='range']::-webkit-slider-runnable-track {
+    background: linear-gradient(#1091cc, #1091cc) 0/var(--sx) 100% no-repeat #ccc;
+}
+
+[type='range']::-moz-range-track {
+    box-sizing: border-box;
+    border: none;
+    width: 12.5em;
+    height: 0.25em;
+    background: #ccc;
+}
+
+[type='range']::-ms-track {
+    box-sizing: border-box;
+    border: none;
+    width: 12.5em;
+    height: 0.25em;
+    background: #ccc;
+}
+
+[type='range']::-moz-range-progress {
+    height: 0.25em;
+    background: #1091cc;
+}
+
+[type='range']::-ms-fill-lower {
+    height: 0.25em;
+    background: #1091cc;
+}
+
+[type='range']::-webkit-slider-thumb {
+    margin-top: -0.625em;
+    box-sizing: border-box;
+    border: none;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #f90;
+}
+
+[type='range']::-moz-range-thumb {
+    box-sizing: border-box;
+    border: none;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #f90;
+}
+
+[type='range']::-ms-thumb {
+    margin-top: 0;
+    box-sizing: border-box;
+    border: none;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    background: #f90;
+}
+
+[type='range']::-ms-tooltip {
+    display: none;
+}
+
+/*********** END Crossbrowser progress in input type=range from csstricks.com ***********/

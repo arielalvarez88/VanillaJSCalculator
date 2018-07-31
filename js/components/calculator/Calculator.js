@@ -213,7 +213,7 @@ Calculator.prototype.createChildren = function (nodes) {
     new Slider({
         minVal: 1,
         maxVal: 40,
-        keyInStore: 'yearsOfMortgage',
+        keyInStore: "yearsOfMortgage",
         parentId: "years-of-mortgage"
     })
 
@@ -226,23 +226,23 @@ Calculator.prototype.createChildren = function (nodes) {
     })
 
     new DollarInput({
-        keyInStore: 'loanAmount',
+        keyInStore: "loanAmount",
         parentId: "loan-amount"
     })
 
 
     new DollarInput({
-        keyInStore: 'anualTax',
-        parentId: 'anual-tax'
+        keyInStore: "anualTax",
+        parentId: "anual-tax"
     })
 
     new DollarInput({
-        keyInStore: 'anualInsurance',
-        parentId: 'anual-insurance'
+        keyInStore: "anualInsurance",
+        parentId: "anual-insurance"
     })
 
 
-    var resultsContainer = this.el.getElementsByClassName('results-section')[0];
+    var resultsContainer = this.el.getElementsByClassName("results-section")[0];
     new Results({
         parent: resultsContainer
     })

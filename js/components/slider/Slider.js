@@ -84,12 +84,12 @@ Slider.prototype.attachListenersToEvents = function (rootElement) {
  * @param {HTMLElement} rootElement
  */
 Slider.prototype.listenToSliderDrag = function (rootElement) {
-    var rangeInput = rootElement.getElementsByClassName('range-input')[0];
+    var rangeInput = rootElement.getElementsByClassName("range-input")[0];
 
-    document.documentElement.classList.add('js');
+    document.documentElement.classList.add("js");
 
-    rangeInput.addEventListener('input', function (e) {
-        rangeInput.style.setProperty('--val', + rangeInput.value)
+    rangeInput.addEventListener("input", function (e) {
+        rangeInput.style.setProperty("--val", + rangeInput.value)
     }, false);
 }
 

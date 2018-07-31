@@ -20,7 +20,7 @@ var Input = function (config) {
     this.state = {
         value: Store.getState()[config.keyInStore].value,
         errorCls: Store.getState()[config.keyInStore].hasError ? "error" : "",
-        readOnly: config.readOnly ? 'readonly' : ''
+        readOnly: config.readOnly ? "readonly" : ""
     };
 
     /**
@@ -57,7 +57,7 @@ Input.prototype.update = function () {
         input.value = this.state.value;
     }
 
-    if (this.state.errorCls === '') {
+    if (this.state.errorCls === "") {
         inputContainer.className = inputContainer.className.replace("error", "");
     } else if (!inputContainer.className.contains("error")) {
         inputContainer.className = inputContainer.className + " error";

@@ -12,10 +12,10 @@ RequiredValidationRule.prototype = Object.create(ValidationRule.prototype);
  * @return {String[]} 
  */
 RequiredValidationRule.validate = function(value){
-    if(value !== '' && value !== null){
+    if(value !== "" && value !== null){
         return [];
     }else{
-        return ['Mandatory field'];   
+        return ["Mandatory field"];   
     }
     
 

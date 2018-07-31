@@ -17,7 +17,7 @@ var onload = function () {
      * Create inital component.
      */
     new Calculator({
-        parentId: 'calculator-container'
+        parentId: "calculator-container"
     })
 
 }

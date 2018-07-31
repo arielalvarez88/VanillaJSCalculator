@@ -8,7 +8,7 @@ var NumberInput = function (config) {
 
     Input.call(this, config); //Call parent class constructor
 
-    
+
 }
 
 NumberInput.prototype = Object.create(Input.prototype);
@@ -24,7 +24,7 @@ NumberInput.prototype.getTemplateUrl = function () {
  * @param {Event} ev 
  */
 NumberInput.prototype.onInput = function (ev) {
-    var newVal = ev.target.value === '' ? null : Number(ev.target.value);
+    var newVal = ev.target.value === "" ? null : Number(ev.target.value);
     Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: newVal });
 }
 
@@ -32,15 +32,20 @@ NumberInput.prototype.onInput = function (ev) {
 /**
  * Validates that only valid chars are entered and avoid the "." char twice.
  * @param {Event} ev 
- */
+ */ 
 NumberInput.prototype.onKeyPress = function (ev) {
     var validInput = ev.key.search(/[\d\.]/) >= 0,
         isNumberPuntuation = ev.key.search(/\./) >= 0,
         isPointAndAlreadyHadPoint = (this.input.value !== "" && this.input.value.contains(".")) && isNumberPuntuation;
 
+    //firefox workaround to make the allow backspace in number input.
+    var isBackSpace = ev.which === 8,
+        isTab = ev.which === 0;
+
+    validInput = validInput || isBackSpace || isTab;
+
     if (!validInput || isPointAndAlreadyHadPoint) {
         ev.preventDefault();
-
     }
 
 }

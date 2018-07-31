@@ -3,6 +3,6 @@ var Actions = Object.freeze({
     CALCULATE: "calculate",
     CALC_SUBMIT: "calc_submit",
     SET_CALC_ERROR: "set_calc_error",
-    SET_INPUT_ERROR: 'set_input_error',
-    CLEAR_INPUT_ERROR: 'clear_input_error'
+    SET_INPUT_ERROR: "set_input_error",
+    CLEAR_INPUT_ERROR: "clear_input_error"
 })

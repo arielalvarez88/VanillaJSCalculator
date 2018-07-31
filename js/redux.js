@@ -36,7 +36,7 @@ var Redux = {
 
 
         }
-        store.dispatch({ type: 'Init state' }); // Init store's state by dispatching initial action.
+        store.dispatch({ type: "Init state" }); // Init store's state by dispatching initial action.
         return store;
     }
 }

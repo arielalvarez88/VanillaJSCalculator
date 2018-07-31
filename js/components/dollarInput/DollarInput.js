@@ -5,7 +5,7 @@
  */
 var DollarInput = function (config) {
 
-    AbstractComponent.call(this, config); //Call parent class constructor
+    NumberInput.call(this, config); //Call parent class constructor
 
 }
 

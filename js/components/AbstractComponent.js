@@ -43,12 +43,12 @@ var AbstractComponent = function (config) {
     * @property {String}
     */
     this.keyInStore = config.keyInStore;
+    this.props = this.mapStateToProps();
 
     HttpUtils.getFileContent(this.getTemplateUrl(), function (content) {
         me.template = content.trim();
         me.render();
     })
-    this.props = this.mapStateToProps();
 
     Store.subscribe(this.onStoreChanged.bind(this));
 

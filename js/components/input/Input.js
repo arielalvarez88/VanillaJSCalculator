@@ -4,23 +4,23 @@
  * provides styling.
  * 
  *      
- * @typedef {{keyInStore: string, inputId: string}} InputConfig
+ * @typedef {{keyInStore: string, readOnly: boolean}} InputConfig
  * @class Input
  * @param {InputConfig} config 
  * @param {string} config.keyInStore The field in the store to update when this input changes.
- * @param {string} config.inputId The id of the input element. 
+ * @param {boolean} config.readOnly
  *
  */
 var Input = function (config) {
 
-    AbstractComponent.call(this, config); //Call parent class constructor
     this.valueFromStore = config.valueFromStore || false;
     /**
      * @property 
      */
     this.state = {
-        value: Store.getState()[this.keyInStore].value,
-        errorCls: Store.getState()[this.keyInStore].hasError ? "error" : ""
+        value: Store.getState()[config.keyInStore].value,
+        errorCls: Store.getState()[config.keyInStore].hasError ? "error" : "",
+        readOnly: config.readOnly ? 'readonly' : ''
     };
 
     /**
@@ -28,10 +28,9 @@ var Input = function (config) {
      */
     this.input = null;
 
-    /**
-     * Id for the input element
-     */
-    this.inputId = config.inputId || '';
+    AbstractComponent.call(this, config); //Call parent class constructor
+
+
 
 
 
@@ -68,15 +67,6 @@ Input.prototype.update = function () {
 
 }
 
-
-/**
- * @override
- */
-Input.prototype.mapStateToProps = function () {
-    return {
-        inputId: this.inputId
-    };
-}
 
 /**
  * @override

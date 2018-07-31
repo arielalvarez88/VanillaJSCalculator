@@ -103,10 +103,11 @@ Slider.prototype.createChildren = function () {
     var inputContainers = this.el.getElementsByClassName("input-container");
 
     for (var i = 0; i < inputContainers.length; i++) {
-        new Input({
+        new NumberInput({
             keyInStore: this.keyInStore,
             parent: inputContainers[i],
-            valueFromStore: true
+            valueFromStore: true,
+            readOnly: true
         });
     }
 

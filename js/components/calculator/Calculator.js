@@ -7,7 +7,7 @@
 var Calculator = function (config) {
 
     AbstractComponent.call(this, config); //Call parent class constructor
-    
+
 
 }
 
@@ -227,21 +227,18 @@ Calculator.prototype.createChildren = function (nodes) {
 
     new DollarInput({
         keyInStore: 'loanAmount',
-        parentId: "loan-amount",
-        inputId: "loan-amount-input"
+        parentId: "loan-amount"
     })
 
 
     new DollarInput({
         keyInStore: 'anualTax',
-        parentId: 'anual-tax',
-        inputId: "anual-tax-input"
+        parentId: 'anual-tax'
     })
 
     new DollarInput({
         keyInStore: 'anualInsurance',
-        parentId: 'anual-insurance',
-        inputId: "anual-insurance-input"
+        parentId: 'anual-insurance'
     })
 
 

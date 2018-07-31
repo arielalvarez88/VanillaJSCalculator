@@ -225,20 +225,23 @@ Calculator.prototype.createChildren = function (nodes) {
         parentId: "rate-of-interest"
     })
 
-    new DollarInput({
+    this.childComponents.loanAmount = new DollarInput({
         keyInStore: "loanAmount",
-        parentId: "loan-amount"
+        parentId: "loan-amount",
+        min: 0
     })
 
 
-    new DollarInput({
+    this.childComponents.anualTax = new DollarInput({
         keyInStore: "anualTax",
-        parentId: "anual-tax"
+        parentId: "anual-tax",
+        min: 0
     })
 
-    new DollarInput({
+    this.childComponents.anualInsurance = new DollarInput({
         keyInStore: "anualInsurance",
-        parentId: "anual-insurance"
+        parentId: "anual-insurance",
+        min: 0
     })
 
 

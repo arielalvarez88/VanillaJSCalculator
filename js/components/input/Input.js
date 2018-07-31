@@ -14,14 +14,16 @@
 var Input = function (config) {
 
     this.valueFromStore = config.valueFromStore || false;
+
+    this.state = this.state || {};
     /**
      * @property 
      */
-    this.state = {
+    this.state = ObjectUtils.assign(this.state, {
         value: Store.getState()[config.keyInStore].value,
         errorCls: Store.getState()[config.keyInStore].hasError ? "error" : "",
         readOnly: config.readOnly ? "readonly" : ""
-    };
+    });
 
     /**
      * Reference to the HTMLElement of type input in this component.

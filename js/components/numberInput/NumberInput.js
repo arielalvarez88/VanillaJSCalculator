@@ -2,10 +2,18 @@
 /** 
  * Input that accepts only numeric values and the "." char.
  * @class NumberInput
- * @param {InputConfig} config 
- */
+ * @param {Object} config
+ * @param {string} config.keyInStore The field in the store to update when this input changes.
+ * @param {boolean} config.readOnly
+ * @param {min} config.min
+ * 
+ **/
+
 var NumberInput = function (config) {
 
+    this.state = {
+        min: typeof config.min === "number" ? config.min : ""
+    };
     Input.call(this, config); //Call parent class constructor
 
 
@@ -30,35 +38,11 @@ NumberInput.prototype.onInput = function (ev) {
 
 
 /**
- * Validates that only valid chars are entered and avoid the "." char twice.
- * @param {Event} ev 
- */ 
-NumberInput.prototype.onKeyPress = function (ev) {
-    var validInput = ev.key.search(/[\d\.]/) >= 0,
-        isNumberPuntuation = ev.key.search(/\./) >= 0,
-        isPointAndAlreadyHadPoint = (this.input.value !== "" && this.input.value.contains(".")) && isNumberPuntuation;
-
-    //firefox workaround to make the allow backspace in number input.
-    var isBackSpace = ev.which === 8,
-        isTab = ev.which === 0;
-
-    validInput = validInput || isBackSpace || isTab;
-
-    if (!validInput || isPointAndAlreadyHadPoint) {
-        ev.preventDefault();
-    }
-
-}
-
-
-
-/**
  * 
  * @override
  */
 NumberInput.prototype.attachListenersToEvents = function (nodes) {
     Input.prototype.attachListenersToEvents.call(this, nodes);
-    this.input.onkeypress = this.onKeyPress.bind(this);
     this.input.oninput = this.onInput.bind(this);
 }
 

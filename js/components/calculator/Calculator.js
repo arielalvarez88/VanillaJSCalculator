@@ -122,6 +122,7 @@ Calculator.prototype.attachListenersToEvents = function (nodes) {
 
     var form = this.el.getElementsByTagName("form")[0];
     form.onsubmit = this.onSubmit.bind(this);
+
 }
 
 /**
@@ -151,6 +152,11 @@ Calculator.prototype.validate = function () {
                 {
                     rule: RequiredValidationRule,
                     args: {}
+                }, {
+                    rule: ValidNumberInput,
+                    args: {
+                        input: this.childComponents.loanAmount.input
+                    }
                 }
             ]
             ,
@@ -158,12 +164,22 @@ Calculator.prototype.validate = function () {
                 {
                     rule: RequiredValidationRule,
                     args: {}
+                }, {
+                    rule: ValidNumberInput,
+                    args: {
+                        input: this.childComponents.anualTax.input
+                    }
                 }
             ],
             "anualInsurance": [
                 {
                     rule: RequiredValidationRule,
                     args: {}
+                }, {
+                    rule: ValidNumberInput,
+                    args: {
+                        input: this.childComponents.anualInsurance.input
+                    }
                 }
             ]
         }, vals = {

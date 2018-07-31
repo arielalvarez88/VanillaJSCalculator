@@ -33,6 +33,11 @@ NumberInput.prototype.getTemplateUrl = function () {
  */
 NumberInput.prototype.onInput = function (ev) {
     var newVal = ev.target.value === "" ? null : Number(ev.target.value);
+    
+    if(!ev.target.checkValidity() && typeof newVal !== "number") {
+        newVal = NaN;
+    }
+
     Store.dispatch({ type: Actions.UPDATE_INPUT_VAL, keyInStore: this.keyInStore, value: newVal });
 }
 

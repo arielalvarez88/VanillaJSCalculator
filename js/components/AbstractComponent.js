@@ -89,7 +89,8 @@ AbstractComponent.prototype.mapStateToProps = function () { return {}; }
 AbstractComponent.prototype.didPropsChanged = function (oldProps, newProps) {
     var change = false;
     Object.keys(oldProps).forEach(function (prop) {
-        change = change || (oldProps[prop] !== newProps[prop]);
+        var bothAreNaN = isNaN(oldProps[prop]) && isNaN(newProps[prop]);
+        change = change || (oldProps[prop] !== newProps[prop] && !bothAreNaN) ;
         if (change) {
             return false;
         }

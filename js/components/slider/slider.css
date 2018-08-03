@@ -2,9 +2,7 @@
 * Style in all sizes.
 **/
 
-.slider .digital-value {
-    padding-left: 10px;
-}
+
 
 @media only screen and (max-width: 600px) {
     .slider input[type=range] {
@@ -12,9 +10,13 @@
     }
     .slider .range-number {
         width: 18px;
+        padding: 0 4px;
+
     }
     .slider .digital-value {
-        width: 50px;
+        width: 50px;        
+        padding-left: 6px;
+        
     }
 }
 
@@ -24,9 +26,12 @@
     }
     .slider .range-number {
         width: 29px;
+        padding: 0 5px;
     }
     .slider .digital-value {
         width: 60px;
+        padding-left: 9px;
+
     }
 }
 
@@ -126,7 +131,7 @@ input[type=range] {
     width: 100%;
 }
 
-/*********** END Crossbrowser progress in input type=range from csstricks.com ***********/
+/***********  Crossbrowser progress in input type=range from csstricks.com ***********/
 
 [type='range'] {
     --range: calc(var(--max) - var(--min));

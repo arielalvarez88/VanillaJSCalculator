@@ -135,6 +135,10 @@ Calculator.prototype.onSubmit = function (ev) {
     var isValid = this.validate();
     if (isValid) {
         Store.dispatch({ type: Actions.CALCULATE });
+        this.el.querySelector('.results-section').scrollIntoView({ 
+            behavior: 'smooth' 
+          });
+          
     }
 }
 
